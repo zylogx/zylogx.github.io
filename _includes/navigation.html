@@ -1,3 +1,116 @@
 <nav>
   <a href="{{ site.url }}/archive/">Archive</a>
+  <a href="#" id="toggleMode">
+    <i id="modeIcon" class="fas fa-moon"></i>
+  </a>
 </nav>
+
+<style>
+  /* Set up flex layout for navigation */
+  nav {
+    display: flex;
+    gap: 15px; /* Space between items */
+    align-items: center; /* Vertical alignment of items */
+  }
+
+  /* Light and Dark Mode Styles */
+  body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  body.dark-mode {
+    background-color: #242424;
+    color: #ddd9d9;
+  }
+
+  /* Title color based on mode */
+  body.light-mode .website-title {
+    color: #202020; /* Dark color for light mode */
+  }
+
+  body.dark-mode .website-title {
+    color: #949393; /* Light color for dark mode */
+  }
+
+  /* Meta color based on mode */
+  body.light-mode .meta {
+    color: #555555; /* Medium dark color for light mode */
+  }
+
+  body.dark-mode .meta {
+    color: #bfbfbf; /* Medium light color for dark mode */
+  }
+
+  /* Link styles for light mode */
+  body.light-mode nav a {
+    color: #000000; /* Dark text for light mode */
+  }
+
+  /* Link styles for dark mode */
+  body.dark-mode nav a {
+    color: #ffffff; /* Light text for dark mode */
+  }
+
+  body.light-mode i,
+  body.light-mode em {
+    color: #575757;
+  }
+
+  body.dark-mode i,
+  body.dark-mode em {
+    color: #fafafa;
+  }
+
+  body.light-mode small {
+    color: #575757;
+  }
+
+  body.dark-mode small {
+    color: #969696;
+  }
+
+  /* Style for the toggle icon */
+  #toggleMode {
+    text-decoration: none;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Adjust icon size */
+  #modeIcon {
+    font-size: 1.2em;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleButton = document.getElementById('toggleMode');
+    const modeIcon = document.getElementById('modeIcon');
+    const body = document.body;
+
+    // Set initial mode based on local storage
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      modeIcon.classList.replace('fa-moon', 'fa-sun');
+    } else {
+      body.classList.add('light-mode');
+      modeIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+
+    // Toggle mode and save preference
+    toggleButton.addEventListener('click', function(event) {
+      event.preventDefault();
+      if (body.classList.contains('light-mode')) {
+        body.classList.replace('light-mode', 'dark-mode');
+        modeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.replace('dark-mode', 'light-mode');
+        modeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  });
+</script>

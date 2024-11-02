@@ -121,7 +121,6 @@ h3, h4, h5, h6 {
   margin-bottom: 30px;
 }
 .meta {
-  color: rgba({{ site.text-color }}, 0.5);
   display: block;
   margin-bottom: 10px;
   font-weight: 400;
@@ -203,7 +202,6 @@ pre code {
 }
 small {
   font-size: .8em;
-  color: rgba({{ site.text-color }},.5);
 }
 small a {
   color: inherit;
@@ -260,6 +258,9 @@ header img {
   display: inline-block;
 }
 nav {
+  display: flex;         /* Align items horizontally */
+  gap: 15px;             /* Space between "Archive" and the icon */
+  align-items: center;   /* Vertically center items in nav */
   margin: 20px 0;
 }
 article {
@@ -335,7 +336,7 @@ footer {
   font-size: 1.2em;
   color: rgb(192, 192, 192);
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: #222121;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   height: 120px;
 }
