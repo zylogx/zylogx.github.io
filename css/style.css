@@ -566,7 +566,7 @@ nav a.current {
     align-items: center;
   }
 
-body.light-mode .highlight .hll { background-color: #ffffff }
+  body.light-mode .highlight .hll { background-color: #ffffff }
   body.light-mode .highlight .lineno {
     color: rgb(27, 27, 27);
     margin-right: 8px;
